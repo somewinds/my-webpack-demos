@@ -1,7 +1,7 @@
 module.exports = {
 	// 入口文件，是模块构建的起点，同时每一个入口文件对应最后生成的一个 chunk
 	// chunk：code spliting后的产物，也就是按需加载的分块，装载了不同的module
-	// entry: './main.js', // 单入口
+	// entry: './main.js', // 单入口文件
 	entry: {
 		bundle1: './main1.js',
 		bundle2: './main2.js'
@@ -16,7 +16,7 @@ module.exports = {
 	output: {
 		/*path: path.resolve(__dirname, 'build'),*/
 		// filename: 'bundle.js' // 单入口
-		filename: '[name].js'
+		filename: '[name].js' // 输出文件名
 	},
 	// 这里配置了处理个模块的 loader，包括 css 预处理 loader，es6 编译 loader，图片处理 loader
 	// loader：能转换各类资源，并处理成对应模块的加载器。loader间可以串行使用
