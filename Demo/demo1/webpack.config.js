@@ -29,7 +29,7 @@ module.exports = {
 	},*/
 	// webpack 各插件对象，在 webpack 的事件流中执行对应的方法
 	/*plugins: [
-		new webpack.HotModuleReplacementPlugin();
+		new webpack.HotModuleReplacementPlugin()
 	],*/
 };
 

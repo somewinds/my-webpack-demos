@@ -1,7 +1,7 @@
 module.exports = {
 	// 入口文件，是模块构建的起点，同时每一个入口文件对应最后生成的一个 chunk
 	// chunk：code spliting后的产物，也就是按需加载的分块，装载了不同的module
-	entry: './main.js',
+	entry: './main.jsx',
 	// 文件路径指向（可加快打包过程）
 	/*resolve: {
 		alias: {
@@ -18,21 +18,34 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(jpg|png|gif)$/, // 文件验证规则
+				test: /\.js[x]?$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['es2015', 'react']
+					}	
+				}
+			},
+			{
+				test: /\.css$/,
 				use: [
 					{
-						loader: 'url-loader',
+						loader: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
 						options: {
-							limit: 47104 // 单位：bytes，1KB=1024bytes，这里 47104bytes 约等于 46KB，即 如果图片大小大于limit值，那么图片将转为 Data URL 格式，否则为正常格式
+							modules: true
 						}
 					}
 				]
 			}
-		]
+		],
 	},
 	// webpack 各插件对象，在 webpack 的事件流中执行对应的方法
 	/*plugins: [
-		new webpack.HotModuleReplacementPlugin();
+		new webpack.HotModuleReplacementPlugin()
 	],*/
 };
 
